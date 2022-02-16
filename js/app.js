@@ -31,5 +31,5 @@ function incomeExpenseCalculation() {
 
 document.getElementById('calculation').addEventListener('click', function () {
     ExpensesCalculation();
-    incomeExpenseCalculation()
+    incomeExpenseCalculation();
 }) 
