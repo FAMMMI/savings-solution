@@ -1,24 +1,33 @@
+.heading-style{
+    color: rgb(29, 189, 189);
+}
 /* calculation body */
 .calculation-section{
-    background-color: rgb(235, 228, 228);
+    background-color: rgb(208, 220, 255);
 }
-/* common button */
+/* common  */
 .button{
-    margin-top: 20px;
+    margin-top: 10px;
     background-color: dodgerblue;
     color: white;
     border: 0;
-    padding: 10px 30px;
+    padding: 2px 20px;
     border-radius: 5px;
     font-size: larger;
+    
 
 }
+
 /* for all inputs */
 .input{
-    border: 0;
-    align-items: center;
+    
     background-color: rgb(245, 244, 243);
+    border: 1px solid lightgray;
 
 
 }
 /* for notifications */
+.error-msg{
+    color: red;
+    font-weight: bold;
+}
