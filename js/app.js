@@ -32,4 +32,23 @@ function incomeExpenseCalculation() {
 document.getElementById('calculation').addEventListener('click', function () {
     ExpensesCalculation();
     incomeExpenseCalculation();
-}) 
+});
+
+function savingCalculation() {
+    incomeExpenseCalculation();
+    const balanceText = document.getElementById('balance').innerText;
+    const balance = parseFloat(balanceText);
+    const savingPercentText = document.getElementById('savingPercent').value;
+    const savingPercent = parseFloat(savingPercentText);
+
+    document.getElementById('savingAmount').innerText = (balance * savingPercent) / 100;
+    document.getElementById('remainingBalance').innerText = balance - ((balance * savingPercent) / 100);
+
+
+}
+
+document.getElementById('savingButton').addEventListener('click', function () {
+
+    savingCalculation();
+
+})
