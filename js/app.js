@@ -1,54 +1,80 @@
-function ExpensesCalculation() {
+// constant variables
+const incomeInput = document.getElementById("incomeInput");
+const rentInput = document.getElementById("rentInput");
+const clothesInput = document.getElementById("clothInput");
+const foodInput = document.getElementById("foodInput");
+const totalExpense = document.getElementById("expense");
+const balanceShow = document.getElementById("balance");
+const balanceInput = document.getElementById("balance");
+const saveAmount = document.getElementById("savingAmount");
+const saveInput = document.getElementById("savingPercent");
+const remainingBalance = document.getElementById("remainingBalance");
 
-    const foodCostText = document.getElementById('foodInput').value;
-    const foodCost = parseFloat(foodCostText);
-
-    const rentCostText = document.getElementById('rentInput').value;
-    const rentCost = parseFloat(rentCostText);
-
-    const clothesCostText = document.getElementById('clothInput').value;
-    const clothesCost = parseFloat(clothesCostText);
-
-    if (foodCost > 0 && rentCost > 0 && clothesCost > 0) {
-        const totalCost = foodCost + rentCost + clothesCost;
-        document.getElementById('expense').innerText = totalCost;
-    }
-
+// gets the total sum
+function getSum(Rent, Clothes, Food) {
+    let sum = Rent + Clothes + Food;
+    return sum;
 }
 
-function incomeExpenseCalculation() {
-    const incomeText = document.getElementById('incomeInput').value;
-    const income = parseFloat(incomeText);
-    const totalCostText = document.getElementById('expense').innerText;
-    const totalCost = parseFloat(totalCostText);
-    const balance = income - totalCost;
-    if (income > 0 && balance > 0) {
-        document.getElementById('balance').innerText = balance;
-    }
-    ExpensesCalculation();
 
+// checks if the given input is number or not
+function checkNum() {
+    if (
+        isNaN(incomeInput.value) ||
+        isNaN(rentInput.value) ||
+        isNaN(clothesInput.value) ||
+        isNaN(foodInput.value) ||
+        incomeInput.value < 0 ||
+        rentInput.value < 0 ||
+        clothesInput.value < 0 ||
+        foodInput.value < 0 || isNaN(saveInput.value) || saveInput.value < 0 || incomeInput.value == '' || rentInput.value == '' || clothesInput.value == '' || foodInput.value == '') {
+        return true;
+    }
+    else return false;
 }
 
-document.getElementById('calculation').addEventListener('click', function () {
-    ExpensesCalculation();
-    incomeExpenseCalculation();
+// Starts working if the below button if clicked 
+document.getElementById("calculation").addEventListener("click", function () {
+    if (checkNum()) {
+
+    } else {
+        const totalSum = getSum(
+            parseFloat(foodInput.value),
+            parseFloat(clothesInput.value),
+            parseFloat(rentInput.value)
+        );
+        if (totalSum <= incomeInput.value) {
+            totalExpense.innerText = totalSum;
+            const balanceInp =
+                parseFloat(incomeInput.value) - parseFloat(totalExpense.innerText);
+            balanceShow.innerText = balanceInp;
+        }
+    }
 });
 
-function savingCalculation() {
-    incomeExpenseCalculation();
-    const balanceText = document.getElementById('balance').innerText;
-    const balance = parseFloat(balanceText);
-    const savingPercentText = document.getElementById('savingPercent').value;
-    const savingPercent = parseFloat(savingPercentText);
+// Starts working if the below button if clicked
+document.getElementById("savingButton").addEventListener("click", function () {
 
-    document.getElementById('savingAmount').innerText = (balance * savingPercent) / 100;
-    document.getElementById('remainingBalance').innerText = balance - ((balance * savingPercent) / 100);
+    if (checkNum() || totalExpense.innerText == '' || balanceShow.innerText == '') {
 
+    } else {
+        const saveBalance =
+            (parseFloat(incomeInput.value) * parseFloat(saveInput.value)) / 100;
 
-}
+        if (saveBalance <= parseFloat(balanceInput.innerText)) {
+            saveAmount.innerText = saveBalance;
+            const totalExpense =
+                parseFloat(incomeInput.value) -
+                (getSum(
+                    parseFloat(foodInput.value),
+                    parseFloat(clothesInput.value),
+                    parseFloat(rentInput.value)
+                ) +
+                    saveBalance);
+            const rem_balance = document.getElementById("remainingBalance");
+            rem_balance.innerText = totalExpense;
+        } else {
 
-document.getElementById('savingButton').addEventListener('click', function () {
-
-    savingCalculation();
-
-})
+        }
+    }
+});

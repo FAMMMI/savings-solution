@@ -49,6 +49,10 @@
                     </div>
                     <!-- expense add button -->
                     <button id="calculation" class="button ">Calculate</button>
+                    <!-- error message -->
+                    <div class="d-flex justify-content-center mt-3">
+                        <div id="error-div-1" class="error-msg"></div>
+                    </div>
                     <!-- expense and balance -->
                     <div>
                         <h4 class="mt-3">Total Expenses : <span id="expense">00</span></h4>
@@ -60,6 +64,10 @@
                         <input class="me-2 ms-2 input" type="text" id="savingPercent">
                         <span> % <button id="savingButton" class="ms-2 button">save</button></span>
                     </div>
+                    <!-- error message 2 -->
+                    <div class="d-flex justify-content-center mt-3">
+                        <div id="error-div-2" class="error-msg"></div>
+                    </div>
                     <!-- savings summery -->
                     <div>
                         <h4 class="mt-3">Saving Amouunt : <span id="savingAmount">00</span></h4>
@@ -70,14 +78,8 @@
 
             </div>
         </section>
-        <!-- notification section -->
-        <div class="notify-section">
-            <p id="invalid-input" class="notify">!!! Invalid Input, Please try again</p>
-            <p id="insufficient-balance" class="notify">Sorry insufficient balance !!</p>
-        </div>
-    </main>
-    <!-- javascript connection -->
-    <script src="js/app.js"></script>
+        <!-- javascript connection -->
+        <script src="js/app.js"></script>
 </body>
 
 </html>
